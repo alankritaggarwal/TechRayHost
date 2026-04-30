@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechRay Solutions LLC</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+
+body { scroll-behavior:smooth; }
+
+/* NAVBAR */
+nav {
+    position:fixed;
+    width:100%;
+    background:rgba(10, 15, 30, 0.95);
+    padding:12px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+}
+
+nav img {
+    height:40px;
+}
+
+nav a {
+    color:white;
+    margin-left:20px;
+    text-decoration:none;
+    font-weight:500;
+}
+
+nav a {
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #2563eb;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* LOADER BACKGROUND */
+#loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #0b1f3a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* SPINNER */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #ffffff30;
+    border-top: 4px solid #2563eb;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* ANIMATION */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.logo-loader {
+    width: 80px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.7; }
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background: url('images/hero.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    position: relative;
+}
+
+/* DARK OVERLAY (IMPORTANT for readability) */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(11, 31, 58, 0.75); /* matches your brand */
+}
+
+/* Ensure text stays above overlay */
+.hero > div {
+    position: relative;
+    z-index: 1;
+}
+
+.hero {
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero button {
+    transition: 0.3s;
+}
+
+.hero button:hover {
+    transform: translateY(-3px);
+}
+
+/* INITIAL STATE */
+.slide-up {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: slideUp 1s ease forwards;
+}
+
+.delay {
+    animation-delay: 0.5s;
+}
+
+.delay2 {
+    animation-delay: 0.7s;
+}
+
+/* ANIMATION */
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-container img {
+    height: 40px;
+}
+
+.logo-container span {
+    color: white;
+    font-weight: 300;
+    font-size: 15px;
+    opacity: 0.7;
+}
+
+.logo-container span {
+    color: white;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+.logo-container span strong {
+    font-weight: 600;
+}
+
+.hero h1 {
+    font-size:48px;
+}
+
+.hero p {
+    margin-top:15px;
+    font-size:18px;
+}
+
+.hero button {
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    background:white;
+    color:#2563eb;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+/* SECTION */
+section {
+    padding:80px 20px;
+    text-align:center;
+}
+
+h2 {
+    margin-bottom:20px;
+    font-size:32px;
+}
+
+/* ABOUT */
+.about {
+    background:#f8fafc;
+}
+
+.about-new {
+    padding: 100px 20px;
+    background: #f8fafc;
+}
+
+.about-wrapper {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+/* LEFT */
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-text h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    margin-bottom: 15px;
+    color: #475569;
+    line-height: 1.7;
+}
+
+.about-new {
+    text-align: left;
+}
+
+.about-text button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.about-text button:hover {
+    transform: translateY(-3px);
+}
+
+/* RIGHT IMAGES */
+.about-images {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;   /* centers horizontally */
+    align-items: center;       /* centers vertically */
+}
+
+.about-images img {
+    width: 100%;              /* take full container width */
+    max-width: 450px;         /* control size */
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.single-img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+
+
+/* SERVICES */
+.services {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+}
+
+.card {
+    width:300px;
+    padding:25px;
+    border-radius:12px;
+    background:white;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.card:hover {
+    transform:translateY(-10px);
+}
+
+.why-us {
+    padding: 100px 20px;
+    background: #f8fafc;
+    text-align: center;
+}
+
+.why-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.why-card {
+    width: 260px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.why-card:hover {
+    transform: translateY(-8px);
+}
+
+/* ICON */
+.why-card .icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+/* TEXT */
+.why-card h3 {
+    margin-bottom: 10px;
+}
+
+/* TEXT */
+.why-us h2 {
+    color: #ffffff;
+}
+
+.why-card p {
+    color: #475569;
+    font-size: 14px;
+}
+
+/* IMAGE STRIP */
+.why-us {
+    position: relative;
+    background: url('images/why.jpg') center/cover no-repeat;
+    padding: 100px 20px;
+}
+
+/* DARK OVERLAY (important for readability) */
+.why-us::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(11, 31, 58, 0.75); /* matches your theme */
+}
+
+/* Keep content above overlay */
+.why-us * {
+    position: relative;
+    z-index: 1;
+}
+
+/* CONTACT */
+.contact-full {
+    position: relative;
+    min-height: 100vh;
+    background: url('images/quote.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+}
+
+/* DARK OVERLAY */
+.contact-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(11, 31, 58, 0.75);
+}
+
+/* CONTENT WRAPPER */
+.contact-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding: 60px;
+}
+
+/* FORM BOX */
+.contact-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 100%;
+}
+
+/* TEXT */
+.contact-box h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.contact-box p {
+    margin-bottom: 20px;
+    color: #475569;
+}
+
+/* FORM */
+.contact-box label {
+    display: block;
+    margin: 12px 0 5px;
+    text-align: left;
+    font-weight: 500;
+}
+
+.contact-box input,
+.contact-box textarea {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #e5e7eb;
+    border-radius: 5px;
+}
+
+/* ROW */
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+.row div {
+    flex: 1;
+}
+
+/* BUTTON */
+.contact-box button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 14px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.contact-box button:hover {
+    background: #1d4ed8;
+}
+
+.career {
+    padding: 100px 20px;
+    background: #ffffff;
+    text-align: center;
+}
+
+.career-container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* HEADING */
+.career h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+/* INTRO TEXT */
+.career-intro {
+    max-width: 750px;
+    margin: 0 auto 50px;
+    color: #475569;
+    line-height: 1.7;
+}
+
+/* GRID */
+.career-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+
+/* CARDS */
+.career-card {
+    width: 240px;
+    background: #f8fafc;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: left;
+    transition: 0.3s;
+}
+
+.career-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.career-card h3 {
+    margin-bottom: 10px;
+}
+
+.career-card p {
+    font-size: 14px;
+    color: #475569;
+}
+
+/* FOOTER */
+.footer {
+    background: #0b1f3a;
+    color: #fff;
+    padding-top: 60px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* COLUMNS */
+.footer-col {
+    flex: 1;
+    min-width: 220px;
+    margin-bottom: 30px;
+}
+
+/* LOGO */
+.footer-logo {
+    width: 140px;
+    margin-bottom: 10px;
+}
+
+/* HEADINGS */
+.footer-col h3 {
+    margin-bottom: 15px;
+}
+
+/* LINKS */
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: #cbd5f5;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: #fff;
+}
+
+/* SOCIAL ICONS */
+/* Default */
+.social-icons a {
+    display: inline-block;
+    margin-right: 10px;
+    background: #1e3a8a;
+    color: white;
+    width: 38px;
+    height: 38px;
+    text-align: center;
+    line-height: 38px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+/* Hover effects per platform */
+.social-icons a:nth-child(1):hover { background: #0077b5; } /* LinkedIn */
+.social-icons a:nth-child(2):hover { background: #1877f2; } /* Facebook */
+.social-icons a:nth-child(3):hover { background: #000000; } /* X */
+.social-icons a:nth-child(4):hover { background: #25d366; } /* WhatsApp */
+
+/* COPYRIGHT */
+.footer-bottom {
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+/* MOBILE */
+@media(max-width:768px) {
+    .hero h1 { font-size:32px; }
+
+    .about-wrapper {
+        flex-direction: column;
+    }
+
+    .about-images img {
+        width: 90%;
+    }
+
+    .img2 {
+        position: relative;
+        top: 20px;
+        left: 0;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    nav div {
+        margin-top: 10px;
+    }
+
+    .contact-content {
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .social-icons {
+        margin-top: 10px;
+    }
+}
+
+</style>
+
+</head>
+
+<div id="loader">
+    <img src="images/logo.png" class="logo-loader">
+</div>
+
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="logo-container">
+        <img src="images/logo.png" alt="TechRay Logo">
+        <span><strong>TechRay</strong> Solutions</span>
+    </div>
+
+    <div>
+        <a href="#">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-content">
+        <h1 class="slide-up">Empowering Businesses with Top Talent</h1>
+        <p class="slide-up delay">Premium IT Staffing Solutions by TechRay</p>
+        <button class="slide-up delay2" onclick="document.getElementById('contact').scrollIntoView()">
+            Get in Touch
+        </button>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about-new">
+
+    <div class="about-wrapper">
+
+        <!-- LEFT CONTENT -->
+        <div class="about-text">
+            <h2>About TechRay</h2>
+
+            <p>
+                TechRay Solutions LLC is a leading IT staffing and consulting firm committed to helping 
+                businesses scale with the right talent. We deliver high-quality, cost-effective workforce 
+                solutions that drive growth and innovation.
+            </p>
+
+            <p>
+                Headquartered in <strong>XYZ</strong> with a delivery center in <strong>Noida, India</strong>, 
+                we connect organizations with top-tier professionals across the United States.
+            </p>
+
+            <p>
+                Whether you need contract staffing, contract-to-hire, or direct hire, our team ensures 
+                fast, reliable, and high-quality talent delivery.
+            </p>
+
+            <button onclick="document.getElementById('contact').scrollIntoView()">
+                Contact Us
+            </button>
+        </div>
+
+        <!-- RIGHT IMAGES -->
+        <div class="about-images">
+            <img src="images/about1.jpg" class="single-img">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="reveal">
+    <h2>Our Services</h2>
+    <div class="services">
+
+        <div class="card">
+            <h3>Contract Staffing</h3>
+            <p>Flexible workforce solutions for project-based needs.</p>
+        </div>
+
+        <div class="card">
+            <h3>Contract-to-Hire</h3>
+            <p>Evaluate talent before full-time onboarding.</p>
+        </div>
+
+        <div class="card">
+            <h3>Direct Hire</h3>
+            <p>Hire top full-time professionals efficiently.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- IMAGE STRIP -->
+<section class="why-us">
+    <h2>Why TechRay?</h2>
+
+    <div class="why-container">
+
+        <div class="why-card" id="FastHire">
+            <div class="icon">⚡</div>
+            <h3>Fast Hiring</h3>
+            <p>Quick turnaround with access to a vast talent pool.</p>
+        </div>
+
+        <div class="why-card" id="QualityTalent">
+            <div class="icon">🎯</div>
+            <h3>Quality Talent</h3>
+            <p>Pre-screened professionals aligned to your business needs.</p>
+        </div>
+
+        <div class="why-card" id="TrustedPartner">
+            <div class="icon">🤝</div>
+            <h3>Trusted Partner</h3>
+            <p>Long-term partnerships built on consistent delivery.</p>
+        </div>
+
+        <div class="why-card" id="GlobalReach">
+            <div class="icon">🌍</div>
+            <h3>Global Reach</h3>
+            <p>Access to talent across US with strong offshore support.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="career">
+
+    <div class="career-container">
+
+        <h2>Careers at TechRay</h2>
+
+        <p class="career-intro">
+            When you partner with TechRay, you’ll experience a personalized approach to your job search. 
+            We focus on understanding your strengths, goals, and aspirations to match you with the right opportunities.
+        </p>
+
+        <div class="career-grid">
+
+            <div class="career-card">
+                <h3>Personalized Guidance</h3>
+                <p>We take time to understand your skills, preferences, and career goals.</p>
+            </div>
+
+            <div class="career-card">
+                <h3>Right Opportunities</h3>
+                <p>We align you with roles that are challenging, fulfilling, and growth-oriented.</p>
+            </div>
+
+            <div class="career-card">
+                <h3>People-First Approach</h3>
+                <p>We value individuals, not just resumes—ensuring a meaningful experience.</p>
+            </div>
+
+            <div class="career-card">
+                <h3>Expert Recruiters</h3>
+                <p>Our experienced team helps you find opportunities that truly fit your profile.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-full">
+
+    <div class="contact-overlay"></div>
+
+    <div class="contact-content">
+
+        <div class="contact-box">
+            <h2>Get a Free Quote</h2>
+            <p>We would love to hear from you!</p>
+
+            <form action="https://formspree.io/f/YOUR_ID" method="POST">
+
+                <label>Name</label>
+                <input type="text" name="name" placeholder="Name" required>
+
+                <div class="row">
+                    <div>
+                        <label>Phone Number</label>
+                        <input type="text" name="phone" placeholder="Phone Number">
+                    </div>
+
+                    <div>
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                </div>
+
+                <label>Message</label>
+                <textarea name="message" rows="4" placeholder="Message"></textarea>
+
+                <button type="submit">Submit</button>
+
+            </form>
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <!-- LOGO + SOCIAL -->
+        <div class="footer-col">
+            <img src="images/logo.png" alt="TechRay Logo" class="footer-logo">
+            <p>TechRay Solutions LLC</p>
+			<br>
+
+            <div class="social-icons">
+				<a href="https://www.linkedin.com" target="_blank">
+					<i class="fab fa-linkedin-in"></i>
+				</a>
+
+				<a href="https://www.facebook.com" target="_blank">
+					<i class="fab fa-facebook-f"></i>
+				</a>
+
+				<!-- X (Twitter) -->
+				<a href="https://twitter.com" target="_blank">
+					<i class="fab fa-x-twitter"></i>
+				</a>
+
+				<!-- WhatsApp -->
+				<a href="https://wa.me/971509720501?text=Hi%20TechRay%20Team,%20I%20am%20interested%20in%20your%20services" target="_blank">
+					<i class="fab fa-whatsapp"></i>
+    </a>
+			</div>
+        </div>
+
+        <!-- LINKS -->
+        <div class="footer-col">
+            <h3>Important Links</h3>
+            <ul>
+                <li><a href="#about">→ About Us</a></li>
+                <li><a href="#services">→ Services</a></li>
+                <li><a href="#contact">→ Contact Us</a></li>
+                <li><a href="#">→ Careers</a></li>
+            </ul>
+        </div>
+
+        <!-- SERVICES -->
+        <div class="footer-col">
+            <h3>Our Services</h3>
+            <ul>
+                <li><a href="#FastHire">→ Fast Hiring</a></li>
+				<li><a href="#QualityTalent">→ Quality Talent</a></li>
+				<li><a href="#TrustedPartner">→ Trusted Partner</a></li>
+				<li><a href="#GlobalReach">→ Global Reach</a></li>
+            </ul>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="footer-col">
+            <h3>Get In Touch</h3>
+            <p>📍 Your Office Address, UAE</p>
+            <p>📧 info@solutionstechray.com</p>
+            <p>📞 +971-XXXXXXXXX</p>
+        </div>
+
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="footer-bottom">
+        <p>© 2026 TechRay Solutions LLC. All rights reserved.</p>
+    </div>
+
+</footer>
+
+<script>
+window.addEventListener("scroll", function() {
+    const nav = document.querySelector("nav");
+    if (window.scrollY > 50) {
+        nav.style.background = "rgba(10, 15, 30, 0.98)";
+        nav.style.boxShadow = "0 2px 10px rgba(0,0,0,0.2)";
+    } else {
+        nav.style.background = "rgba(10, 15, 30, 0.95)";
+        nav.style.boxShadow = "none";
+    }
+});
+
+
+function revealOnScroll() {
+    const reveals = document.querySelectorAll(".reveal");
+
+    reveals.forEach((el) => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+
+        if (elementTop < windowHeight - 100) {
+            el.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+
+window.addEventListener("load", function() {
+    const loader = document.getElementById("loader");
+    loader.style.opacity = "0";
+    loader.style.transition = "opacity 0.5s ease";
+
+    setTimeout(() => {
+        loader.style.display = "none";
+    }, 500);
+});
+</script>
+
+</body>
+</html>
