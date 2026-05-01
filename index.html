@@ -861,7 +861,7 @@ h2 {
             <h2>Get a Free Quote</h2>
             <p>We would love to hear from you!</p>
 
-            <form action="https://formspree.io/f/YOUR_ID" method="POST">
+            <form id="contactForm">
 
                 <label>Name</label>
                 <input type="text" name="name" placeholder="Name" required>
@@ -959,7 +959,30 @@ h2 {
 
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    emailjs.init("12xxOQhQDyQEilg5q");
+
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        emailjs.sendForm("service_wbe0ksv", "template_f66y1qt", this)
+        .then(function() {
+            document.querySelector(".contact-box").innerHTML =
+                "<h3>✅ Thank you! We’ll contact you shortly.</h3>";
+        })
+        .catch(function(error) {
+            alert("Failed to send message. Try again.");
+            console.log(error);
+        });
+
+    });
+
+});
+
+
 window.addEventListener("scroll", function() {
     const nav = document.querySelector("nav");
     if (window.scrollY > 50) {
@@ -1000,3 +1023,4 @@ window.addEventListener("load", function() {
 
 </body>
 </html>
+
